@@ -1,14 +1,12 @@
 import express from 'express'
+import { mapOrder } from '~/utils/sorts.js'
 
 const app = express()
 
 const hostname = 'localhost'
 const port = 8017
 
-app.get('/', function (req, res) {
-  res.send('<h1>Hello world</h1>')
-})
-
 app.listen(port, hostname, () => {
-  console.log(`Hello, I'm running server at http://${hostname}:${port}`)
+  // eslint-disable-next-line no-console
+  console.log(`Hello, I am running at http://${ hostname }:${ port }/`)
 })
