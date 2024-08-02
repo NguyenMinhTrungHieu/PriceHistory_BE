@@ -1,12 +1,27 @@
 import express from 'express'
-import { mapOrder } from '~/utils/sorts.js'
+import cors from 'cors'
+import config from './config/mongodb.js'
+import Router from './routes/v1/index.js'
 
+// Tạo ứng dụng Express
 const app = express()
 
-const hostname = 'localhost'
-const port = 8017
+// Cấu hình CORS
+const corsOptions = {
+  origin: 'http://localhost:5173', // Thay bằng origin của frontend của bạn
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}
 
-app.listen(port, hostname, () => {
+// Sử dụng CORS middleware
+app.use(cors(corsOptions))
+
+app.use(express.json())
+app.use('/v1', Router)
+
+// Khởi động server
+app.listen(config.port, () => {
   // eslint-disable-next-line no-console
-  console.log(`Hello, I am running at http://${ hostname }:${ port }/`)
+  console.log(`Server is running on http://localhost:${config.port}`)
 })
+
