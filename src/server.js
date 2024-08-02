@@ -8,7 +8,7 @@ const app = express()
 
 // Cấu hình CORS
 const corsOptions = {
-  origin: 'http://localhost:5173', // Thay bằng origin của frontend của bạn
+  origin: 'https://pricehistory-fe.vercel.app/', // Thay bằng origin của frontend của bạn
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }
